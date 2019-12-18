@@ -1,0 +1,51 @@
+{
+  "name": "@supercharge/hapi-aws-lambda",
+  "description": "Run your hapi server on AWS Lambda",
+  "version": "0.0.0",
+  "author": "Marcus Pöhls <marcus@superchargejs.com>",
+  "bugs": {
+    "url": "https://github.com/superchargejs/hapi-aws-lambda/issues"
+  },
+  "devDependencies": {
+    "@hapi/code": "~7.0.0",
+    "@hapi/hapi": "~18.4.0",
+    "@hapi/lab": "~21.0.0",
+    "eslint": "~6.7.1",
+    "eslint-config-standard": "~14.1.0",
+    "eslint-plugin-import": "~2.18.2",
+    "eslint-plugin-node": "~10.0.0",
+    "eslint-plugin-promise": "~4.2.1",
+    "eslint-plugin-standard": "~4.0.1"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "index.js",
+    "src"
+  ],
+  "homepage": "https://github.com/superchargejs/hapi-aws-lambda",
+  "keywords": [
+    "hapi",
+    "hapi",
+    "aws",
+    "lambda",
+    "nodejs"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superchargejs/hapi-aws-lambda.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "list:tests": "lab --assert @hapi/code --dry --verbose",
+    "test": "lab --assert @hapi/code --leaks --coverage --lint --reporter console --output stdout --reporter html --output ./coverage/coverage.html",
+    "test:single": "lab --assert @hapi/code --leaks --lint --id"
+  }
+}
