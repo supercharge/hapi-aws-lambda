@@ -47,8 +47,8 @@ npm i @supercharge/hapi-aws-lambda
 ## Usage
 Using `@supercharge/hapi-aws-lambda` is a two-step process:
 
-1. Implement the function’s entrypoint
-2. Configure Binary Media Types for your API Gateway
+1. [Implement the function’s entrypoint](#the-lambda-function)
+2. [Configure Binary Media Types for your API Gateway](#configure-binary-media-types)
 
 
 ### The Lambda Function
