@@ -16,7 +16,7 @@ class HapiOnAwsLambda {
    * @returns {HapiOnAwsLambda}
    */
   static for (server) {
-    return new this({ server })
+    return new this(server)
   }
 
   /**
