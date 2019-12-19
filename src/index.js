@@ -28,7 +28,7 @@ class HapiOnAwsLambda {
    *
    * @returns {APIGatewayProxyResult}
    */
-  async handle (event) {
+  async proxy (event) {
     const response = await this.sendThroughServer(event)
 
     return ApiGatewayResponse.from(response)
@@ -44,8 +44,19 @@ class HapiOnAwsLambda {
    */
   async sendThroughServer (event) {
     return this.server.inject(
-      Request.createFrom(event)
+      this.createRequestFrom(event)
     )
+  }
+
+  /**
+   * Create a hapi-compatible request using the event’s input.
+   *
+   * @param {APIGatewayEvent} event
+   *
+   * @returns {Object}
+   */
+  createRequestFrom (event) {
+    return Request.createFrom(event)
   }
 }
 
