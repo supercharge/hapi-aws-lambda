@@ -95,10 +95,9 @@ class Request {
 
     return Object
       .entries(headers)
-      .reduce((collect, [name, value]) => ({
-        ...collect,
-        [name]: (value.length === 1) ? value[0] : value
-      }), {})
+      .reduce((collect, [name, value]) => {
+        return { ...collect, [name]: value }
+      }, {})
   }
 }
 
