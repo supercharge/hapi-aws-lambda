@@ -18,7 +18,7 @@
   <br/>
   <br/>
   <p>
-    <a href="https://www.npmjs.com/package/@superchargejs/hapi-aws-lambda"><img src="https://img.shields.io/npm/v/@superchargejs/hapi-aws-lambda.svg" alt="Latest Version"></a>
+    <a href="https://www.npmjs.com/package/@supercharge/hapi-aws-lambda"><img src="https://img.shields.io/npm/v/@supercharge/hapi-aws-lambda.svg" alt="Latest Version"></a>
   </p>
   <p>
     <em>Follow <a href="http://twitter.com/marcuspoehls">@marcuspoehls</a> and <a href="http://twitter.com/superchargejs">@superchargejs</a> for updates!</em>
@@ -30,7 +30,7 @@
 ## Introduction
 Serverless is becoming popular and widely accepted in the developer community. Going serverless requires a mindset shift. Going serverless requires you to think stateless.
 
-This `@superchargejs/hapi-aws-lambda` package let’s you use your [hapi.js](https://hapi.dev) HTTP server on AWS Lambda.
+This `@supercharge/hapi-aws-lambda` package let’s you use your [hapi.js](https://hapi.dev) HTTP server on AWS Lambda.
 
 This package wraps your hapi server and transforms an incoming event from Lambda and API Gateway into a request. The request will be injected into your hapi server and the resulting response transformed into an API-Gateway-compatible format.
 
@@ -40,18 +40,18 @@ It’s basically a “done for you” package to run your hapi server in a serve
 ## Installation
 
 ```
-npm i @superchargejs/hapi-aws-lambda
+npm i @supercharge/hapi-aws-lambda
 ```
 
 
 ## Usage
-Using `@superchargejs/hapi-aws-lambda` is pretty straightforward.
+Using `@supercharge/hapi-aws-lambda` is pretty straightforward.
 
 ```js
 'use strict'
 
 const Hapi = require('@hapi/hapi')
-const HapiOnLambda = require('@superchargejs/aws-serverless-hapi')
+const LambdaHandler = require('@supercharge/hapi-aws-lambda')
 
 // this `handler` will be used as a cached instance
 // a warm Lambda function will reuse the handler for incoming events
@@ -70,10 +70,10 @@ module.exports.handler = async event => {
     // transform the Lambda/API Gateway event to a request, send
     // the request through your hapi server and then create
     // an API Gateay compatible response
-    handler = HapiOnLambda.for(server)
+    handler = LambdaHandler.for(server)
   }
 
-  return handler.handle(event)
+  return handler.proxy(event)
 }
 ```
 
