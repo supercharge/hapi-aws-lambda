@@ -1,6 +1,6 @@
 'use strict'
 
-const Request = require('./request')
+const HapiRequest = require('./request')
 const ApiGatewayResponse = require('./response')
 
 class HapiOnAwsLambda {
@@ -56,7 +56,7 @@ class HapiOnAwsLambda {
    * @returns {Object}
    */
   createRequestFrom (event) {
-    return Request.createFrom(event)
+    return HapiRequest.createFrom(event)
   }
 }
 
