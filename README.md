@@ -45,7 +45,14 @@ npm i @supercharge/hapi-aws-lambda
 
 
 ## Usage
-Using `@supercharge/hapi-aws-lambda` is pretty straightforward.
+Using `@supercharge/hapi-aws-lambda` is a two-step process:
+
+1. Implement the function’s entrypoint
+2. Configure Binary Media Types for your API Gateway
+
+
+### The Lambda Function
+Using `@supercharge/hapi-aws-lambda` is pretty straightforward:
 
 ```js
 'use strict'
@@ -76,6 +83,14 @@ module.exports.handler = async event => {
   return handler.proxy(event)
 }
 ```
+
+### Configure Binary Media Types
+Serving images from an HTTP server running in a Lambda function won’t work out of the box. When neccessary, `@supercharge/hapi-aws-lambda` Base64-encodes the response data so that AWS API Gateway can handle the response body.
+
+You need to explicitely configure binary media types in your the API Gateway that is responsible for your Lambda function. Here’s a screenshot of the `*/*` configuration we use:
+
+![AWS API Gateway: Binary Media Types configuration](https://github.com/superchargejs/hapi-aws-lambda/blob/master/media/hapi-aws-api-gateway-binary-media-types.png?raw=1)
+
 
 
 ## Contributing
