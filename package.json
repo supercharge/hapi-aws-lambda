@@ -1,7 +1,7 @@
 {
   "name": "@supercharge/hapi-aws-lambda",
   "description": "Run your hapi server in an AWS Lambda function",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Marcus Pöhls <marcus@superchargejs.com>",
   "bugs": {
     "url": "https://github.com/superchargejs/hapi-aws-lambda/issues"
