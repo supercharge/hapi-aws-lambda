@@ -1,52 +1,129 @@
 {
-    "httpMethod": "GET",
-    "//body": "{\"name\": \"Marcus\"}",
-    "path": "/users",
-    "resource": "/{proxy+}",
-    "queryStringParameters": {},
-    "pathParameters": {
-        "proxy": "users"
-    },
-    "headers": {
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-        "Accept-Encoding": "gzip, deflate, sdch, br",
-        "Accept-Language": "en-US,en;q=0.8",
-        "CloudFront-Forwarded-Proto": "https",
-        "CloudFront-Is-Desktop-Viewer": "true",
-        "CloudFront-Is-Mobile-Viewer": "false",
-        "CloudFront-Is-SmartTV-Viewer": "false",
-        "CloudFront-Is-Tablet-Viewer": "false",
-        "CloudFront-Viewer-Country": "US",
-        "Content-Type": "application/json",
-        "Host": "xxxxxxxxxx.execute-api.us-east-1.amazonaws.com",
-        "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36",
-        "Via": "1.1 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)",
-        "X-Amz-Cf-Id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_xxxxxxxxxxx_xxxx==",
-        "X-Forwarded-For": "11.111.111.111, 11.111.111.111",
-        "X-Forwarded-Port": "111",
-        "X-Forwarded-Proto": "http"
-    },
-    "requestContext": {
-        "accountId": "111111111111",
-        "resourceId": "xxxxxx",
-        "stage": "prod",
-        "requestId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "identity": {
-            "cognitoIdentityPoolId": "",
-            "accountId": "",
-            "cognitoIdentityId": "",
-            "caller": "",
-            "apiKey": "",
-            "sourceIp": "11.111.111.111",
-            "cognitoAuthenticationType": "",
-            "cognitoAuthenticationProvider": "",
-            "userArn": "",
-            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36",
-            "user": ""
-        },
-        "resourcePath": "/{proxy+}",
+    "event": {
+        "resource": "/",
+        "path": "/",
         "httpMethod": "GET",
-        "apiId": "xxxxxxxxxx"
+        "headers": {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en-US,en;q=0.5",
+            "CloudFront-Forwarded-Proto": "https",
+            "CloudFront-Is-Desktop-Viewer": "true",
+            "CloudFront-Is-Mobile-Viewer": "false",
+            "CloudFront-Is-SmartTV-Viewer": "false",
+            "CloudFront-Is-Tablet-Viewer": "false",
+            "CloudFront-Viewer-Country": "DE",
+            "Host": "xxxxxxxxxx.execute-api.eu-central-1.amazonaws.com",
+            "upgrade-insecure-requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0",
+            "Via": "2.0 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)",
+            "X-Amz-Cf-Id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==",
+            "X-Amzn-Trace-Id": "Root=1-5dfc94ac-20ef846f11500560ff7d8ff0",
+            "X-Forwarded-For": "213.211.251.180, 70.132.63.145",
+            "X-Forwarded-Port": "443",
+            "X-Forwarded-Proto": "https"
+        },
+        "multiValueHeaders": {
+            "Accept": [
+                "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+            ],
+            "Accept-Encoding": [
+                "gzip, deflate, br"
+            ],
+            "Accept-Language": [
+                "en-US,en;q=0.5"
+            ],
+            "CloudFront-Forwarded-Proto": [
+                "https"
+            ],
+            "CloudFront-Is-Desktop-Viewer": [
+                "true"
+            ],
+            "CloudFront-Is-Mobile-Viewer": [
+                "false"
+            ],
+            "CloudFront-Is-SmartTV-Viewer": [
+                "false"
+            ],
+            "CloudFront-Is-Tablet-Viewer": [
+                "false"
+            ],
+            "CloudFront-Viewer-Country": [
+                "DE"
+            ],
+            "Host": [
+                "hls6nzkvz6.execute-api.eu-central-1.amazonaws.com"
+            ],
+            "upgrade-insecure-requests": [
+                "1"
+            ],
+            "User-Agent": [
+                "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0"
+            ],
+            "Via": [
+                "2.0 dde0b4b1e223fa23670e93078a04c116.cloudfront.net (CloudFront)"
+            ],
+            "X-Amz-Cf-Id": [
+                "rnB2fP1qzIdB-uHGs50u8xCoAMLZJrTGVEdcrA9hvlUj89A-GrqE3Q=="
+            ],
+            "X-Amzn-Trace-Id": [
+                "Root=1-5dfc94ac-20ef846f11500560ff7d8ff0"
+            ],
+            "X-Forwarded-For": [
+                "213.211.251.180, 70.132.63.145"
+            ],
+            "X-Forwarded-Port": [
+                "443"
+            ],
+            "X-Forwarded-Proto": [
+                "https"
+            ]
+        },
+        "queryStringParameters": null,
+        "multiValueQueryStringParameters": null,
+        "pathParameters": null,
+        "stageVariables": null,
+        "requestContext": {
+            "resourceId": "9xu0kwon1j",
+            "resourcePath": "/",
+            "httpMethod": "GET",
+            "extendedRequestId": "E_wrBGizFiAFlJQ=",
+            "requestTime": "20/Dec/2019:09:30:20 +0000",
+            "path": "/dev",
+            "accountId": "111111111111",
+            "protocol": "HTTP/1.1",
+            "stage": "dev",
+            "domainPrefix": "1111111111",
+            "requestTimeEpoch": 1576834220896,
+            "requestId": "ca3c3967-3b83-4813-9de0-7fc79c34caef",
+            "identity": {
+                "cognitoIdentityPoolId": null,
+                "accountId": null,
+                "cognitoIdentityId": null,
+                "caller": null,
+                "sourceIp": "213.211.251.180",
+                "principalOrgId": null,
+                "accessKey": null,
+                "cognitoAuthenticationType": null,
+                "cognitoAuthenticationProvider": null,
+                "userArn": null,
+                "userAgent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0",
+                "user": null
+            },
+            "domainName": "1111111111.execute-api.eu-central-1.amazonaws.com",
+            "apiId": "1111111111"
+        },
+        "body": null,
+        "isBase64Encoded": false
+    },
+    "context": {
+        "callbackWaitsForEmptyEventLoop": true,
+        "functionVersion": "$LATEST",
+        "functionName": "lambda-dev-app",
+        "memoryLimitInMB": "256",
+        "logGroupName": "/aws/lambda/lambda-dev-app",
+        "logStreamName": "2019/12/20/[$LATEST]1111111111",
+        "invokedFunctionArn": "arn:aws:lambda:eu-central-1:1111111111",
+        "awsRequestId": "04778c55-8181-470e-afb3-c0256984f753"
     }
 }

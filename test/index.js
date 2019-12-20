@@ -18,7 +18,7 @@ function clone (json) {
 }
 
 function makeEvent (overrides) {
-  const baseEvent = clone(ApiGatewayEvent)
+  const { event: baseEvent } = clone(ApiGatewayEvent)
   const event = Object.assign({}, baseEvent, overrides)
   event.headers = Object.assign({}, baseEvent.headers, overrides.headers)
 
@@ -126,7 +126,7 @@ describe('hapi on AWS Lambda', () => {
     const event = makeEvent({
       path: '/headers',
       httpMethod: 'GET',
-      multiValueHeaders: {
+      headers: {
         'X-API-Key': 'Marcus'
       }
     })
@@ -142,7 +142,7 @@ describe('hapi on AWS Lambda', () => {
     const event = makeEvent({
       path: '/headers',
       httpMethod: 'GET',
-      multiValueHeaders: {
+      headers: {
         'X-API-Keys': ['Marcus', 'Marcus-Key2']
       }
     })

@@ -91,13 +91,7 @@ class Request {
    * @returns {Object}
    */
   headers () {
-    const headers = this.event.multiValueHeaders || {}
-
-    return Object
-      .entries(headers)
-      .reduce((collect, [name, value]) => {
-        return { ...collect, [name]: value }
-      }, {})
+    return this.event.headers
   }
 }
 
