@@ -84,6 +84,7 @@ module.exports.handler = async event => {
 }
 ```
 
+
 ### Configure Binary Media Types
 Serving images from an HTTP server running in a Lambda function won’t work out of the box. When neccessary, `@supercharge/hapi-aws-lambda` Base64-encodes the response data so that AWS API Gateway can handle the response body.
 
@@ -91,6 +92,31 @@ You need to explicitely configure binary media types in your the API Gateway tha
 
 ![AWS API Gateway: Binary Media Types configuration](https://github.com/superchargejs/hapi-aws-lambda/blob/master/media/hapi-aws-api-gateway-binary-media-types.png?raw=1)
 
+
+## Deployment Example
+There’s a deployment example in the [superchargejs/playground-aws-lambda](https://github.com/superchargejs/playground-aws-lambda) repository.
+
+We used the [Serverless](https://serverless.com/cli/) framework to deploy the Supercharge app in the `playground-aws-lambda` repository. The Serverless CLI is sweet. Here’s the sample `serverless.yml` used to deploy the app:
+
+```yaml
+service: supercharge-aws-lambda
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-central-1
+
+functions:
+  app:
+    handler: server.handler
+    memorySize: 384 # default is 1024 MB
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+plugins:
+  - serverless-offline
+```
 
 
 ## Contributing
