@@ -10,7 +10,7 @@
     "@hapi/code": "~7.0.0",
     "@hapi/hapi": "~18.4.0",
     "@hapi/inert": "~5.2.2",
-    "@hapi/lab": "~21.0.0",
+    "@hapi/lab": "~22.0.4",
     "@hapi/vision": "~5.5.4",
     "eslint": "~6.8.0",
     "eslint-config-standard": "~14.1.0",
