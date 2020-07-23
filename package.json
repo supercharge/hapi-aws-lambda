@@ -7,20 +7,20 @@
     "url": "https://github.com/superchargejs/hapi-aws-lambda/issues"
   },
   "devDependencies": {
-    "@hapi/code": "~7.0.0",
-    "@hapi/hapi": "~18.4.0",
-    "@hapi/inert": "~5.2.2",
-    "@hapi/lab": "~21.0.0",
-    "@hapi/vision": "~5.5.4",
-    "eslint": "~6.8.0",
-    "eslint-config-standard": "~14.1.0",
-    "eslint-plugin-import": "~2.20.1",
+    "@hapi/code": "~8.0.1",
+    "@hapi/hapi": "~19.2.0",
+    "@hapi/inert": "~6.0.1",
+    "@hapi/lab": "~22.0.5",
+    "@hapi/vision": "~6.0.0",
+    "eslint": "~7.5.0",
+    "eslint-config-standard": "~14.1.1",
+    "eslint-plugin-import": "~2.22.0",
     "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-promise": "~4.2.1",
     "eslint-plugin-standard": "~4.0.1"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "files": [
     "index.js",
