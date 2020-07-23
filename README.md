@@ -32,7 +32,7 @@ Serverless is becoming popular and widely accepted in the developer community. G
 
 This `@supercharge/hapi-aws-lambda` package let’s you use your [hapi.js](https://hapi.dev) HTTP server on AWS Lambda.
 
-This package wraps your hapi server and transforms an incoming event from Lambda and API Gateway into a request. The request will be injected into your hapi server and the resulting response transformed into an API-Gateway-compatible format.
+This package wraps your hapi server and transforms an incoming API Gateway event into an HTTP request. The request will be injected into your hapi server and the resulting response transformed *back* into an API-Gateway-compatible format.
 
 It’s basically a “done for you” package to run your hapi server in a serverless function AWS Lambda.
 
