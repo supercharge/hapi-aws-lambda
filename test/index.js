@@ -1,15 +1,11 @@
 'use strict'
 
 const Zlib = require('zlib')
-const Lab = require('@hapi/lab')
 const HapiLambda = require('..')
 const Hapi = require('@hapi/hapi')
-const { expect } = require('@hapi/code')
 
 const { createServer } = require('../examples/hapi-serverless/server')
 const ApiGatewayEvent = require('../examples/hapi-serverless/api-gateway-event.json')
-
-const { describe, it, before } = (exports.lab = Lab.script())
 
 let lambda
 
@@ -26,13 +22,13 @@ function makeEvent (overrides) {
 }
 
 describe('hapi on AWS Lambda', () => {
-  before(async () => {
+  beforeAll(async () => {
     const server = await createServer(false)
     lambda = HapiLambda.for(server)
   })
 
   it('has .proxy() method', async () => {
-    expect(lambda.proxy).to.exist()
+    expect(lambda.proxy).toBeDefined()
   })
 
   it('GET rendered HTML', async () => {
@@ -40,10 +36,10 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.startWith('<!DOCTYPE html>')
-    expect(body).to.include('<h1>Going Serverless with hapi!</h1>')
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toStartWith('<!DOCTYPE html>')
+    expect(body).toInclude('<h1>Going Serverless with hapi!</h1>')
   })
 
   it('GET users as JSON', async () => {
@@ -51,9 +47,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.equal(JSON.stringify([
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toEqual(JSON.stringify([
       { id: 1, name: 'Marcus' },
       { id: 2, name: 'Norman' },
       { id: 3, name: 'Christian' }
@@ -69,9 +65,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.equal(JSON.stringify({ id: 3, name: 'Supercharge' }))
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toEqual(JSON.stringify({ id: 3, name: 'Supercharge' }))
   })
 
   it('GET missing route', async () => {
@@ -79,15 +75,15 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded, multiValueHeaders } = response
-    expect(statusCode).to.equal(404)
-    expect(isBase64Encoded).to.be.false()
-    expect(multiValueHeaders).to.include({
+    expect(statusCode).toEqual(404)
+    expect(isBase64Encoded).toBe(false)
+    expect(multiValueHeaders).toMatchObject({
       'content-type': ['application/json; charset=utf-8'],
       'cache-control': ['no-cache'],
       'content-length': [60],
       connection: ['keep-alive']
     })
-    expect(body).to.equal(JSON.stringify({ statusCode: 404, error: 'Not Found', message: 'Not Found' }))
+    expect(body).toEqual(JSON.stringify({ statusCode: 404, error: 'Not Found', message: 'Not Found' }))
   })
 
   it('serves images', async () => {
@@ -101,9 +97,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.true()
-    expect(body).to.exist()
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(true)
+    expect(body).toBeDefined()
   })
 
   it('handles querystrings', async () => {
@@ -117,9 +113,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.equal(JSON.stringify({ name: 'Marcus' }))
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toEqual(JSON.stringify({ name: 'Marcus' }))
   })
 
   it('handles headers', async () => {
@@ -133,9 +129,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.include('"x-api-key":"Marcus"')
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toInclude('"x-api-key":"Marcus"')
   })
 
   it('handles headers with multiple values', async () => {
@@ -149,9 +145,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.include('"x-api-keys":["Marcus","Marcus-Key2"]')
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toInclude('"x-api-keys":["Marcus","Marcus-Key2"]')
   })
 
   it('empty type', async () => {
@@ -175,9 +171,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.equal('empty-type')
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toEqual('empty-type')
   })
 
   it('content encoding', async () => {
@@ -202,9 +198,9 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.equal('encoding-identity')
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toEqual('encoding-identity')
   })
 
   it('content encoding gzip', async () => {
@@ -229,12 +225,12 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded, multiValueHeaders } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.true()
-    expect(multiValueHeaders).to.include({ 'content-encoding': ['gzip'] })
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(true)
+    expect(multiValueHeaders).toMatchObject({ 'content-encoding': ['gzip'] })
     expect(
       Zlib.gunzipSync(Buffer.from(body, 'base64')).toString('utf8')
-    ).to.equal('encoding-gzip')
+    ).toEqual('encoding-gzip')
   })
 
   it('removes transfer-encoding header', async () => {
@@ -257,10 +253,12 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded, multiValueHeaders } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.equal('transfer-encoded')
-    expect(multiValueHeaders).to.not.include('transfer-encoding')
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toEqual('transfer-encoded')
+    expect(
+      Object.keys(multiValueHeaders)
+    ).not.toInclude('transfer-encoding')
   })
 
   it('base64 encoded request', async () => {
@@ -273,8 +271,8 @@ describe('hapi on AWS Lambda', () => {
     const response = await lambda.proxy(event)
 
     const { statusCode, body, isBase64Encoded } = response
-    expect(statusCode).to.equal(200)
-    expect(isBase64Encoded).to.be.false()
-    expect(body).to.equal(JSON.stringify({ id: 3, name: 'Supercharge-base64' }))
+    expect(statusCode).toEqual(200)
+    expect(isBase64Encoded).toBe(false)
+    expect(body).toEqual(JSON.stringify({ id: 3, name: 'Supercharge-base64' }))
   })
 })

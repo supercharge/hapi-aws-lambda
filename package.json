@@ -7,17 +7,19 @@
     "url": "https://github.com/superchargejs/hapi-aws-lambda/issues"
   },
   "devDependencies": {
-    "@hapi/code": "~8.0.1",
     "@hapi/hapi": "~19.2.0",
     "@hapi/inert": "~6.0.1",
-    "@hapi/lab": "~22.0.5",
     "@hapi/vision": "~6.0.0",
+    "@types/jest": "~26.0.10",
     "eslint": "~7.5.0",
     "eslint-config-standard": "~14.1.1",
     "eslint-plugin-import": "~2.22.0",
     "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-promise": "~4.2.1",
-    "eslint-plugin-standard": "~4.0.1"
+    "eslint-plugin-standard": "~4.0.1",
+    "handlebars": "~4.7.6",
+    "jest": "~26.4.2",
+    "jest-extended": "~0.11.5"
   },
   "engines": {
     "node": ">=12"
@@ -45,9 +47,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "list:tests": "lab --assert @hapi/code --dry --verbose",
-    "test": "lab --assert @hapi/code --leaks --coverage --lint --reporter console --output stdout --reporter html --output ./coverage/coverage.html --coverage-exclude examples",
-    "test:single": "lab --assert @hapi/code --leaks --lint --id"
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest"
   }
 }
