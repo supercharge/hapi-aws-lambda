@@ -130,6 +130,11 @@ functions:
 
 plugins:
   - serverless-offline
+
+custom:
+  serverless-offline:
+    noStripTrailingSlashInUrl: true
+
 ```
 
 
